@@ -1,4 +1,5 @@
 require('dotenv').config()
+require('./config/database')
 const express = require('express')
 const path = require('path')
 const favicon = require('serve-favicon')
@@ -16,14 +17,16 @@ app.use(express.static(path.join(__dirname, 'build')))
 app.use('/api', routes) <==== Finsih code once you got it
 */
 
+app.use('/api/fruits', require('./routes/api/fruits'))
+
 app.get('/api/test', (req, res) => {
-    res.json({'eureka': 'you have found it'})
+  res.json({ eureka: 'you have found it' })
 })
 
 app.get('*', (req, res) => {
-    res.sendFile(path.join(__dirname, 'build', 'index.html'))
+  res.sendFile(path.join(__dirname, 'build', 'index.html'))
 })
 
 app.listen(PORT, () => {
-    console.log(`I am listening on ${PORT}`)
+  console.log(`I am listening on ${PORT}`)
 })
