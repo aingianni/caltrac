@@ -8,6 +8,8 @@ require('./config/database')
 // const Category = require('./models/category');
 // const Order = require('./models/order');
 
+const Fruit = require('./models/fruit')
+
 // Local variables will come in handy for holding retrieved documents
-let user, item, category, order
-let users, items, categories, orders
+let user, item, category, order, fruit
+let users, items, categories, orders, fruits
