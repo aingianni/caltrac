@@ -1,10 +1,7 @@
 import { useState, useEffect } from 'react'
 import { Routes, Route } from 'react-router-dom'
 import AuthPage from '../AuthPage/AuthPage'
-import NewOrderPage from '../NewOrderPage/NewOrderPage'
-import OrderHistoryPage from '../OrderHistoryPage/OrderHistoryPage'
 import NavBar from '../../components/NavBar/NavBar'
-import FruitsPage from '../FruitsPage/FruitsPage'
 
 function App () {
   const [state, setState] = useState(null)
@@ -31,10 +28,6 @@ function App () {
           ? <>
             <NavBar />
             <Routes>
-              <Route path='/fruits' element={<FruitsPage />} />
-              <Route path='/orders/new' element={<NewOrderPage />} />
-              <Route path='/orders' element={<OrderHistoryPage />} />
-              <Route path='/' element={<NewOrderPage />} />
             </Routes>
           </>
           : <AuthPage setUser={setUser} />
