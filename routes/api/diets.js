@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router();
-const { dataController, apiController } = require('../../controllers/api/diet');
+const { dataController, apiController } = require('../../controllers/api/diets');
 
 router.get('/', dataController.index, apiController.index);
 router.delete('/:id', dataController.destroy, apiController.show);
