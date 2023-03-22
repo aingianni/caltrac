@@ -14,9 +14,10 @@ function App () {
 
   return (
     <main className='App'>
-      <NavBar user={user} />
+      <NavBar user={user} setUser={setUser} />
         <Routes>
           <Route path='/' element={<HomePage />} />
+          <Route path='/login' element={<AuthPage setUser={setUser} />} />
           <Route path='/dashboard' element={<DashBoardPage />} />
         </Routes>
     </main>
