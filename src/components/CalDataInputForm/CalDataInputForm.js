@@ -3,6 +3,10 @@ export default function CalDataInputForm () {
         <>
             <form>
                 <input></input>
+                <input></input>
+                <input></input>
+                <input></input>
+                <input></input>
             </form>
         </>
     )
