@@ -1,9 +1,8 @@
 const { Schema, model } = require('mongoose');
 
 const dietSchema = new Schema({
-    date: String,
-    calIn: Number,
-    calOut: Number,
+    duration: Number,
+    bmr: Number,
     weight: Number,
     bodyFat: Number
 }, {
