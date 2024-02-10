@@ -13,7 +13,6 @@ export default function NavBar ({ user, setUser }) {
   return (
     <nav>
       <Link to='/'>Home</Link>
-      <Link to='/login'>Login / SignUp</Link>
         {
           user ?
             <>
@@ -22,7 +21,8 @@ export default function NavBar ({ user, setUser }) {
                <button onClick={handleLogOut}>Log Out</button>
              </div>
             </>
-            : ''
+            : 
+            <Link to='/login'>Login / SignUp</Link>
           }
     </nav>
   )

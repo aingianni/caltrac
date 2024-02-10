@@ -4,7 +4,8 @@ const dietSchema = new Schema({
     duration: Number,
     bmr: Number,
     weight: Number,
-    bodyFat: Number
+    bodyFat: Number,
+    userId: String
 }, {
     timestamps: true
 });

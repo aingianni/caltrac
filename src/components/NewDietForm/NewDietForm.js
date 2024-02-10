@@ -3,8 +3,12 @@ import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
 import Stack from '@mui/material/Stack';
 import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+import { getUser } from '../../utilities/users-service';
 
-export default function NewDietForm () {
+export default function NewDietForm ({ user, setUser }) {
+    const navigate = useNavigate();
+
     const [duration, setDuration] = useState("");
     const [bmr, setBmr] = useState("");
     const [weight, setWeight] = useState("");
@@ -21,7 +25,8 @@ export default function NewDietForm () {
                     duration: duration,
                     bmr: bmr,
                     weight: weight,
-                    bodyFat: bodyFat
+                    bodyFat: bodyFat,
+                    userId: user._id
                 })
             })
         } catch (error) {
@@ -30,21 +35,21 @@ export default function NewDietForm () {
     }
 
     return (
-        <form action='/somewhere'>
         <Stack direction="row" spacing={2}>
-            <Box
-                component="form"
-                sx={{'& > :not(style)': { m: 1, width: '25ch' }}}
-                noValidate
-                autoComplete="off"
-            >
-                <TextField id="outlined-number" name="duration" label="Duration (Weeks)" type="number" onChange={(e) => setDuration(e.target.value)} InputLabelProps={{shrink: true}}/>
-                <TextField id="outlined-number" name="bmr" label="BMR" type="number" onChange={(e) => setBmr(e.target.value)} InputLabelProps={{shrink: true}}/>
-                <TextField id="outlined-number" name="weight" label="Weight" type="number" onChange={(e) => setWeight(e.target.value)} InputLabelProps={{shrink: true}}/>
-                <TextField id="outlined-number" name="bodyFat" label="Body Fat %" type="number" onChange={(e) => setBodyFat(e.target.value)} InputLabelProps={{shrink: true}}/>
-                <Button variant="contained" type="submit" onClick={() => createDiet()}>Create</Button>
+            <Box component="form" sx={{'& > :not(style)': { m: 1, width: '25ch' }}}>
+                <TextField id="outlined-number" name="duration" label="Duration (Weeks)" type="number" onChange={(e) => setDuration(e.target.value)}/>
+                <TextField id="outlined-number" name="bmr" label="BMR" type="number" onChange={(e) => setBmr(e.target.value)}/>
+                <TextField id="outlined-number" name="weight" label="Weight" type="number" onChange={(e) => setWeight(e.target.value)}/>
+                <TextField id="outlined-number" name="bodyFat" label="Body Fat %" type="number" onChange={(e) => setBodyFat(e.target.value)}/>
+                <Button variant="contained" type="submit" 
+                    onClick={() => {
+                        createDiet()
+                        setUser(getUser())
+                        navigate('/')
+                    }}>
+                    Create
+                </Button>
             </Box>
         </Stack>
-        </form>
     )
 }
