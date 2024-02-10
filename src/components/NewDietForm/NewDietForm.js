@@ -4,13 +4,11 @@ import Button from '@mui/material/Button';
 import Stack from '@mui/material/Stack';
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { getUser } from '../../utilities/users-service';
 
-export default function NewDietForm ({ user, setUser }) {
+export default function NewDietForm ({ user, bmr }) {
     const navigate = useNavigate();
 
     const [duration, setDuration] = useState("");
-    const [bmr, setBmr] = useState("");
     const [weight, setWeight] = useState("");
     const [bodyFat, setBodyFat] = useState("");
 
@@ -35,21 +33,23 @@ export default function NewDietForm ({ user, setUser }) {
     }
 
     return (
+        <>
+        <h1>Create Diet</h1>
+        <h2>Calculated BMR: {bmr}</h2>
         <Stack direction="row" spacing={2}>
             <Box component="form" sx={{'& > :not(style)': { m: 1, width: '25ch' }}}>
-                <TextField id="outlined-number" name="duration" label="Duration (Weeks)" type="number" onChange={(e) => setDuration(e.target.value)}/>
-                <TextField id="outlined-number" name="bmr" label="BMR" type="number" onChange={(e) => setBmr(e.target.value)}/>
-                <TextField id="outlined-number" name="weight" label="Weight" type="number" onChange={(e) => setWeight(e.target.value)}/>
-                <TextField id="outlined-number" name="bodyFat" label="Body Fat %" type="number" onChange={(e) => setBodyFat(e.target.value)}/>
+                <TextField id="outlined-number" name="duration" label="Duration (Weeks)" type="number" onChange={(e) => setDuration(e.target.value)} />
+                <TextField id="outlined-number" name="weight" label="Weight" type="number" onChange={(e) => setWeight(e.target.value)} />
+                <TextField id="outlined-number" name="bodyFat" label="Body Fat %" type="number" onChange={(e) => setBodyFat(e.target.value)} />
                 <Button variant="contained" type="submit" 
                     onClick={() => {
                         createDiet()
-                        setUser(getUser())
-                        navigate('/')
+                        navigate('/dashboard')
                     }}>
                     Create
                 </Button>
             </Box>
         </Stack>
+        </>
     )
 }

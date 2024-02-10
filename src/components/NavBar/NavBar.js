@@ -16,10 +16,8 @@ export default function NavBar ({ user, setUser }) {
         {
           user ?
             <>
-            <Link to='/dashboard'>Dashboard</Link>
-             <div>
-               <button onClick={handleLogOut}>Log Out</button>
-             </div>
+              <Link to='/dashboard'>Dashboard</Link>
+              <button onClick={handleLogOut}>Log Out</button>
             </>
             : 
             <Link to='/login'>Login / SignUp</Link>
