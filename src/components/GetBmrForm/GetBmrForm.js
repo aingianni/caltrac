@@ -16,7 +16,7 @@ export default function GetBmrForm ({user}) {
     const options = {
 	    method: 'GET',
 	    headers: {
-		    'X-RapidAPI-Key': '40d561e367msh00f07ee14b90ee8p1179d9jsna5f36e9dc2ce',
+		    'X-RapidAPI-Key': process.env.REACT_APP_API_KEY,
 		    'X-RapidAPI-Host': 'gym-fit.p.rapidapi.com'
 	    }
     };
