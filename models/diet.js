@@ -1,15 +1,15 @@
-const { Schema, model } = require('mongoose');
+const { Schema, model } = require('mongoose')
 
 const dietSchema = new Schema({
-    duration: Number,
-    bmr: Number,
-    weight: Number,
-    bodyFat: Number,
-    userId: String
+  duration: Number,
+  bmr: Number,
+  weight: Number,
+  bodyFat: Number,
+  userId: String
 }, {
-    timestamps: true
-});
+  timestamps: true
+})
 
-const Diet = model('Diet', dietSchema);
+const Diet = model('Diet', dietSchema)
 
-module.exports = Diet;
+module.exports = Diet
