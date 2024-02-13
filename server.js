@@ -20,6 +20,7 @@ app.use(express.static(path.join(__dirname, 'build')))
 app.use(require('./config/checkToken'))
 app.use('/api/users', require('./routes/api/users'))
 app.use('/api/diets', require('./routes/api/diets'))
+app.use('/api/dietEntrys', require('./routes/api/dietEntrys'))
 
 app.get('*', (req, res) => {
   res.sendFile(path.join(__dirname, 'build', 'index.html'))

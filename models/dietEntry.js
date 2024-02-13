@@ -1,17 +1,17 @@
 const { Schema, model } = require('mongoose')
 
-const dietSchema = new Schema({
-  duration: Number,
-  bmr: Number,
+const dietEntrySchema = new Schema({
+  date: String,
+  calIn: Number,
+  calOut: Number,
   weight: Number,
   bodyFat: Number,
   userId: String,
-  dailyEntries: { type: [], default: undefined },
   completed: { type: Boolean, default: false }
 }, {
   timestamps: true
 })
 
-const Diet = model('Diet', dietSchema)
+const DietEntry = model('DietEntry', dietEntrySchema)
 
-module.exports = Diet
+module.exports = DietEntry

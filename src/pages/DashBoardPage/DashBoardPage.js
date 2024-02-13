@@ -23,24 +23,36 @@ export default function DashBoardPage ({ user, setUser }) {
       <h1>This is the User Dashboard</h1>
       <div>
         {
-            diets
-              ? <ul>
+          !diets.completed
+            ? <ul>
                 {
-                diets.map((diet) => {
-                  return (
-                    <li key={diet._id}>
-                      {
-                      diet.duration
-                    }
-                    </li>
-                  )
-                })
-              }
+                  diets.map((diet) => {
+                    return (
+                      <li key={diet._id}>
+                        {
+                          diet.duration
+                        }
+                      </li>
+                    )
+                  })
+                }
               </ul>
-              : ''
+            : <ul>
+                {
+                  diets.map((diet) => {
+                    return (
+                      <li key={diet._id}>
+                        {
+                          diet.duration
+                        }
+                      </li>
+                    )
+                  })
+                }
+              </ul>
           }
       </div>
-      <GetBmrForm user={user} setUser={setUser} />
+      <GetBmrForm user={user} setUser={setUser} diets={diets} />
     </>
   )
 }

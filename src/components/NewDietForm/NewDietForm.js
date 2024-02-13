@@ -5,11 +5,10 @@ import Stack from '@mui/material/Stack'
 import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 
-export default function NewDietForm ({ user, bmr }) {
+export default function NewDietForm ({ user, bmr, weight }) {
   const navigate = useNavigate()
 
   const [duration, setDuration] = useState('')
-  const [weight, setWeight] = useState('')
   const [bodyFat, setBodyFat] = useState('')
 
   const createDiet = async () => {
@@ -35,11 +34,11 @@ export default function NewDietForm ({ user, bmr }) {
   return (
     <>
       <h1>Create Diet</h1>
-      <h2>Calculated BMR: {bmr}</h2>
+      <h2>Calculated BMR: {bmr} cal</h2>
+      <h2>Starting Weight: {weight} kg</h2>
       <Stack direction='row' spacing={2}>
         <Box component='form' sx={{ '& > :not(style)': { m: 1, width: '25ch' } }}>
           <TextField id='outlined-number' name='duration' label='Duration (Weeks)' type='number' onChange={(e) => setDuration(e.target.value)} />
-          <TextField id='outlined-number' name='weight' label='Weight' type='number' onChange={(e) => setWeight(e.target.value)} />
           <TextField id='outlined-number' name='bodyFat' label='Body Fat %' type='number' onChange={(e) => setBodyFat(e.target.value)} />
           <Button
             variant='contained' type='submit'
